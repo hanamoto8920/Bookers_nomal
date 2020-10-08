@@ -1,5 +1,5 @@
 <!--エラー文章部分-->
-<div class="error">
+<p><a href="#" class="text-danger">
     <% if book.errors.any? %>
         <h2><%= book.errors.count %>件のエラーが発生しました。</h2>
         <ul>
@@ -8,4 +8,4 @@
             <% end %>
         </ul>
     <% end %>
-</div>
+</a></p>

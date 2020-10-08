@@ -1,9 +1,16 @@
 class Book < ApplicationRecord
-  
+
   belongs_to :user
+  has_many :favorites, dependent: :destroy
+  has_many :book_comments, dependent: :destroy
+  
+  # ユーザーがお気に入りしたか確認するメソッド
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
 
   validates :title, presence: true
   validates :body, presence: true
   validates :body, length: { in: 1..200 }
-  
+
 end

@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
-  # get 'users/show'
-  # get 'books/index'
-  # get 'books/create'
-  # get 'books/edit'
-  # get 'books/show'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # ブックモデルのルーティング
   # ブックコントローラ
-  resources :books, only: [:edit, :create, :index, :show, :update, :destroy]
+  resources :books, only: [:edit, :create, :index, :show, :update, :destroy] do
+    resource :favorites, only: [:create, :destroy]
+    resources :book_comments, only: [:create, :destroy]
+  end
 
   # # ホームのコントローラ
   root "homes#top"
@@ -20,9 +18,6 @@ Rails.application.routes.draw do
   # ユーザーモデルのルーティング
   # ユーザーコントローラ
   resources :users, only: [:show, :edit, :update, :index]
-
-  # ログイン認証が成功した後、投稿画像の一覧画面が表示される
-  # root 'books#index'
 
 end
 
