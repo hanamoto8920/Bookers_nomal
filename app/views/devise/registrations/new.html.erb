@@ -18,6 +18,28 @@
   <%= f.text_field :name %>
   <P>メールアドレス</P>
   <%= f.email_field :email %>
+  
+  
+  <P>郵便番号</P>
+  <%= f.text_field :postcode, autocomplete: 'postcode', class: 'form-control' %>
+  
+  <P>都道府県</P>
+  <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control' %>
+  
+  <P>市区町村</P>
+  <%= f.text_field :address_city, autocomplete: 'address_city', class: 'form-control' %>
+  
+  <P>番地</P>
+  <%= f.text_field :address_stree, autocomplete: 'address_street', class: 'form-control' %>
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <p>パスワード(6文字以上)</p>
   <%= f.password_field :password %>
   <p>パスワード(確認用)</p>
